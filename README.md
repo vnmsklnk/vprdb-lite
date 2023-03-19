@@ -8,7 +8,6 @@ To use the tool, your data must be in a specific format.
 * Color images in any format.
 * Depth images corresponding to color images in 16-bit grayscale format.
 * The trajectory containing one pose in each line in `timestamp tx ty tz qx qy qz qw` format.
-* Camera intrinsics as a `.txt` file
 
 Therefore, the structure of the dataset should look like this:
 ```
@@ -21,7 +20,6 @@ Example dataset
 |   ├── 001.pcd
 |   ├── 002.pcd
 |   ├── ...
-├── intrinsics.txt
 └── CameraTrajectory.txt
 ```
 The number of color images, depth images and poses 

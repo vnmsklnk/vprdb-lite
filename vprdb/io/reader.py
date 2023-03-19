@@ -1,6 +1,7 @@
 import mrob
 import numpy as np
 
+from nptyping import Float, NDArray, Shape
 from pathlib import Path
 
 from vprdb.core import Database
@@ -29,7 +30,7 @@ def read_dataset(
     color_dir: str,
     depth_dir: str,
     trajectory_file_name: str,
-    intrinsics_file_name: str,
+    intrinsics: NDArray[Shape["3, 3"], Float],
     depth_scale: int,
 ) -> Database:
     """
@@ -38,7 +39,7 @@ def read_dataset(
     :param color_dir: The name of the directory with color images
     :param depth_dir: The name of the directory with depth images
     :param trajectory_file_name: The name of file with trajectory
-    :param intrinsics_file_name: The name of file with camera intrinsics
+    :param intrinsics: NumPy array with camera intrinsics
     :param depth_scale: Depth scale
     """
     path_to_rgb = path_to_dataset / color_dir
@@ -48,6 +49,5 @@ def read_dataset(
     depth_images = sorted(list(path_to_depth.iterdir()))
 
     traj = __load_poses(path_to_dataset / trajectory_file_name)
-    intrinsics = np.loadtxt(path_to_dataset / intrinsics_file_name)
 
     return Database(rgb_images, depth_images, depth_scale, intrinsics, traj)
