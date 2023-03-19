@@ -26,3 +26,6 @@ Example dataset
 ```
 The number of color images, depth images and poses 
 in the trajectory file must be the same.
+
+## Usage
+Please, check `pipeline.ipynb` with usage example.
