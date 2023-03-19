@@ -14,8 +14,8 @@ def __load_poses(poses_path: Path):
 
     poses = []
     for pose in poses_quat:
-        t = pose[0:3]
-        R = mrob.geometry.quat_to_so3(pose[3:7])
+        t = pose[1:4]
+        R = mrob.geometry.quat_to_so3(pose[4:8])
         T = np.eye(4)
         T[:3, :3] = R
         T[:3, 3] = t
